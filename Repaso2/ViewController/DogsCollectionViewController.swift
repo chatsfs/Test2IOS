@@ -71,7 +71,7 @@ class DogsCollectionViewController: UICollectionViewController {
     }
     
     func updateData(){
-        Alamofire.request("https://api.thedogapi.co.uk/v2/dog.php?limit=20")
+        Alamofire.request("https://api.thedogapi.co.uk/v2/dog.php?limit=50")
         .validate()
         .responseJSON(completionHandler: {
                 response in

@@ -27,7 +27,7 @@ class DogStore {
         dogEntity.setValue(dog.dogImage, forKey: "dogImage")
         dogEntity.setValue(userEmail, forKey: "userEmail")
         save()
-        print("AddFavorite")
+       
     }
     
     func deleteDogById(_ dog: DogEntity, userEmail: String){
@@ -36,8 +36,7 @@ class DogStore {
             let request = NSBatchDeleteRequest(objectIDs: [objectId])
             do {
                 try context.execute(request)
-                save()
-                print("deleteFavorite")
+                save()                
             } catch let error {
                 print("Error: \(error.localizedDescription)")
             }
@@ -46,9 +45,7 @@ class DogStore {
     
     func findDogsByUserEmail (_ userEmail: String) -> [DogEntity]? {
         let predicate = NSPredicate(format: "userEmail = %@", userEmail)
-        print(userEmail)
         if let result = findDogBy(predicate: predicate) {
-            print(result.count)
             return result.map({
                 let dog = DogEntity(dogId: $0.value(forKey: "dogId") as! String, dogImage: $0.value(forKey: "dogImage") as! String)
                 return dog

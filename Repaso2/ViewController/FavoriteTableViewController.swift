@@ -69,8 +69,7 @@ class FavoriteTableViewController: UITableViewController {
     }
     
     func update(){
-        favorites = favoriteStore.findDogsByUserEmail((userPreference.user?.email)!)!
-        print(favorites.count)
+        favorites = favoriteStore.findDogsByUserEmail((userPreference.user?.email)!)!        
         self.tableView!.reloadData()
     }
 
